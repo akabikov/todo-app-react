@@ -25,6 +25,16 @@ class TodoList extends React.Component {
         }));
     }
 
+    compliteTodo = id => {
+        this.setState(st => ({
+            todos: st.todos.map(todo => (
+                (todo.id === id) 
+                ? {...todo, isCompleted: !todo.isCompleted} 
+                : todo
+                ))
+        }));
+    }
+
     removeTodo = id => {
         this.setState(st => ({
             todos: st.todos.filter(todo => (todo.id !== id))
@@ -43,6 +53,7 @@ class TodoList extends React.Component {
                         id={id}
                         task={task}
                         isCompleted={isCompleted}
+                        completeHandler={this.compliteTodo}
                         removeHandler={this.removeTodo}
                     />
                 ))}
