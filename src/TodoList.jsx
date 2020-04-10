@@ -1,16 +1,29 @@
 import React from "react";
+import {v4 as uuid} from "uuid";
 import Todo from "./Todo";
 import NewTodoForm from "./NewTodoForm";
 import "./TodoList.css";
 
 class TodoList extends React.Component {
-    // state = {todos: []}
+    state = {todos: []}
 
     // Mock state
-    state = {todos: [
-        {id: 0, task: "Do something", isCompleted: false},
-        {id: 1, task: "Do again", isCompleted: true},
-    ]}
+    // state = {todos: [
+    //     {id: 0, task: "Do something", isCompleted: false},
+    //     {id: 1, task: "Do again", isCompleted: true},
+    // ]}
+
+    addTodo = task => {
+        const newTodo = {
+            id: uuid(),
+            task, 
+            isCompleted: false,
+        };
+
+        this.setState(st => ({
+            todos: [...st.todos, newTodo]
+        }));
+    }
 
     removeTodo = id => {
         this.setState(st => ({
@@ -33,7 +46,7 @@ class TodoList extends React.Component {
                         removeHandler={this.removeTodo}
                     />
                 ))}
-                <NewTodoForm />
+                <NewTodoForm submitHandler={this.addTodo}/>
             </div>
         );
     }
