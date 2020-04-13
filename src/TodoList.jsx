@@ -35,6 +35,16 @@ class TodoList extends React.Component {
         }));
     }
 
+    editTodo = (id, task) => {
+        this.setState(st => ({
+            todos: st.todos.map(todo => (
+                (todo.id === id) 
+                ? {...todo, task} 
+                : todo
+                ))
+        }));
+    }
+
     removeTodo = id => {
         this.setState(st => ({
             todos: st.todos.filter(todo => (todo.id !== id))
@@ -54,6 +64,7 @@ class TodoList extends React.Component {
                         task={task}
                         isCompleted={isCompleted}
                         completeHandler={this.compliteTodo}
+                        editHandler={this.editTodo}
                         removeHandler={this.removeTodo}
                     />
                 ))}

@@ -3,27 +3,56 @@ import "./Todo.css";
 
 class Todo extends React.Component {
 
-    handleComplete = evt => {
+    state = {
+        editedTask: this.props.task, 
+        isEditMode: false,
+    }
+
+    handleComplete = () => {
         this.props.completeHandler(this.props.id);
     }
-
-    handleEdit = () => {
-        // 
-    }
-
+    
     handleRemove = () => {
         this.props.removeHandler(this.props.id);
     }
 
+    handleEditMode = () => {
+        this.setState({isEditMode: true});
+    }
+
+    handleEdited = evt => {
+        evt.preventDefault();
+        let newTask = this.state.editedTask;
+        this.props.editHandler(this.props.id, newTask);
+        this.setState({isEditMode: false})
+    }
+
+    handleChange = evt => {
+        this.setState({
+            editedTask: evt.target.value
+        });
+    }
+
+
     render() {
         const {id, task, isCompleted} = this.props;
+        const {isEditMode, editedTask} = this.state;
+
+        const editForm = <form onSubmit={this.handleEdited}>
+                             <input type="text" name="TaskEdit" onChange={this.handleChange} value={editedTask} />
+                             <input type="submit" value="Save"/>
+                         </form>;
+        
+        const todo = <div>
+                        <input type="checkbox" name="" id={id} checked={isCompleted} onChange={this.handleComplete}/>
+                        <label htmlFor={id}>{task}</label>
+                        <button name="Edit" onClick={this.handleEditMode} >Edit</button>
+                        <button name="Remove" onClick={this.handleRemove} >X</button>
+                    </div>;
 
         return (
             <div>
-                <input type="checkbox" name="" id={id} checked={isCompleted} onChange={this.handleComplete}/>
-                <label htmlFor={id}>{task}</label>
-                <button name="Edit" onClick={this.handleEdit} >Edit</button>
-                <button name="Remove" onClick={this.handleRemove} >X</button>
+                {isEditMode ? editForm : todo}
             </div>
         );
     }
