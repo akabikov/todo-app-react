@@ -12,11 +12,13 @@ class Todo extends React.Component {
         this.props.completeHandler(this.props.id);
     }
     
-    handleRemove = () => {
+    handleRemove = evt => {
+        evt.preventDefault();
         this.props.removeHandler(this.props.id);
     }
 
-    handleEditMode = () => {
+    handleEditMode = evt => {
+        evt.preventDefault();
         this.setState({isEditMode: true});
     }
 
@@ -38,17 +40,19 @@ class Todo extends React.Component {
         const {id, task, isCompleted} = this.props;
         const {isEditMode, editedTask} = this.state;
 
-        const editForm = <form onSubmit={this.handleEdited}>
-                             <input type="text" name="TaskEdit" onChange={this.handleChange} value={editedTask} />
-                             <input type="submit" value="Save"/>
-                         </form>;
+        const editForm = 
+            <form onSubmit={this.handleEdited}>
+                <input type="text" name="TaskEdit" value={editedTask} onChange={this.handleChange} />
+                <input type="submit" value="Save"/>
+            </form>;
         
-        const todo = <div>
-                        <input type="checkbox" name="" id={id} checked={isCompleted} onChange={this.handleComplete}/>
-                        <label htmlFor={id}>{task}</label>
-                        <button name="Edit" onClick={this.handleEditMode} >Edit</button>
-                        <button name="Remove" onClick={this.handleRemove} >X</button>
-                    </div>;
+        const todo = 
+            <div>
+                <input type="checkbox" id={id} checked={isCompleted} onChange={this.handleComplete}/>
+                <label htmlFor={id}>{task}</label>
+                <button name="Edit" onClick={this.handleEditMode} >Edit</button>
+                <button name="Remove" onClick={this.handleRemove} >X</button>
+            </div>;
 
         return (
             <div>
