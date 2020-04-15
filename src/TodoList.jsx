@@ -4,14 +4,11 @@ import Todo from "./Todo";
 import NewTodoForm from "./NewTodoForm";
 import "./TodoList.css";
 
-class TodoList extends React.Component {
-    state = {todos: this.readStorage() || []}
 
-    // Mock state
-    // state = {todos: [
-    //     {id: 0, task: "Do something", isCompleted: false},
-    //     {id: 1, task: "Do again", isCompleted: true},
-    // ]}
+class TodoList extends React.Component {
+
+    state = {todos: this.readStorage() || []}
+    
     
     readStorage() {
         return JSON.parse(localStorage.getItem("todos"));
@@ -20,6 +17,7 @@ class TodoList extends React.Component {
     updateStorage = () => {
         localStorage.setItem("todos", JSON.stringify(this.state.todos));
     }
+
 
     addTodo = task => {
         const newTodo = {
@@ -58,6 +56,7 @@ class TodoList extends React.Component {
             todos: st.todos.filter(todo => (todo.id !== id))
         }), this.updateStorage);
     }
+
 
     render() {
 
