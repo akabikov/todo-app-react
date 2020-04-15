@@ -5,13 +5,21 @@ import NewTodoForm from "./NewTodoForm";
 import "./TodoList.css";
 
 class TodoList extends React.Component {
-    state = {todos: []}
+    state = {todos: this.readStorage() || []}
 
     // Mock state
     // state = {todos: [
     //     {id: 0, task: "Do something", isCompleted: false},
     //     {id: 1, task: "Do again", isCompleted: true},
     // ]}
+    
+    readStorage() {
+        return JSON.parse(localStorage.getItem("todos"));
+    }
+    
+    updateStorage = () => {
+        localStorage.setItem("todos", JSON.stringify(this.state.todos));
+    }
 
     addTodo = task => {
         const newTodo = {
@@ -22,7 +30,7 @@ class TodoList extends React.Component {
 
         this.setState(st => ({
             todos: [...st.todos, newTodo]
-        }));
+        }), this.updateStorage);
     }
 
     compliteTodo = id => {
@@ -32,7 +40,7 @@ class TodoList extends React.Component {
                 ? {...todo, isCompleted: !todo.isCompleted} 
                 : todo
                 ))
-        }));
+        }), this.updateStorage);
     }
 
     editTodo = (id, task) => {
@@ -42,13 +50,13 @@ class TodoList extends React.Component {
                 ? {...todo, task} 
                 : todo
                 ))
-        }));
+        }), this.updateStorage);
     }
 
     removeTodo = id => {
         this.setState(st => ({
             todos: st.todos.filter(todo => (todo.id !== id))
-        }));
+        }), this.updateStorage);
     }
 
     render() {
