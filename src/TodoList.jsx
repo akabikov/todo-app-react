@@ -60,22 +60,24 @@ class TodoList extends React.Component {
     }
 
     render() {
-        const {todos} = this.state;
+
+        const todoList = 
+            this.state.todos.map(({id, task, isCompleted}) => (
+                <Todo 
+                    key={id}
+                    id={id}
+                    task={task}
+                    isCompleted={isCompleted}
+                    completeHandler={this.compliteTodo}
+                    editHandler={this.editTodo}
+                    removeHandler={this.removeTodo}
+                />
+            ));
 
         return (
             <div>
                 <h1>TodoList</h1>
-                {todos.map(({id, task, isCompleted}) => (
-                    <Todo 
-                        key={id}
-                        id={id}
-                        task={task}
-                        isCompleted={isCompleted}
-                        completeHandler={this.compliteTodo}
-                        editHandler={this.editTodo}
-                        removeHandler={this.removeTodo}
-                    />
-                ))}
+                {todoList}
                 <NewTodoForm submitHandler={this.addTodo}/>
             </div>
         );
