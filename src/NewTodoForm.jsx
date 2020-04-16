@@ -23,7 +23,7 @@ class NewTodoForm extends React.Component {
                 <label htmlFor="newTodo">New ToDo</label>
                 <div>
                     <input type="text" id="newTodo" onChange={this.handleChange} value={this.state.task} />
-                    <input type="submit" value="Add ToDo" />
+                    <button type="submit" title="Add new ToDo"><i className="fas fa-plus"></i></button>
                 </div>
             </form>
         );
