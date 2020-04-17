@@ -41,23 +41,28 @@ class Todo extends React.Component {
         const {isEditMode, editedTask} = this.state;
 
         const editForm = 
-            <form onSubmit={this.handleEdited}>
+            <form className="todo edit" onSubmit={this.handleEdited}>
                 <input type="text" name="TaskEdit" value={editedTask} onChange={this.handleChange} />
                 <button type="submit" title="Save"><i className="far fa-save"></i></button>
             </form>;
         
         const todo = 
-            <div>
+            <div className="todo">
                 <input type="checkbox" id={id} checked={isCompleted} onChange={this.handleComplete}/>
                 <label htmlFor={id}>{task}</label>
-                <button title="Edit" onClick={this.handleEditMode} ><i className="far fa-edit"></i></button>
-                <button title="Remove" onClick={this.handleRemove} ><i className="far fa-trash-alt"></i></button>
+
+                <button title="Edit" onClick={this.handleEditMode} >
+                    <i className="far fa-edit"></i>
+                </button>
+                <button title="Remove" onClick={this.handleRemove} >
+                    <i className="far fa-trash-alt"></i>
+                </button>
             </div>;
 
         return (
-            <div>
+            <li>
                 {isEditMode ? editForm : todo}
-            </div>
+            </li>
         );
     }
 }

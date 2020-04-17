@@ -1,0 +1,37 @@
+.todo {
+    background: lightgray;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 2rem 2rem;
+    align-items: center;
+    margin: 0.5rem auto;
+    padding: 1rem;
+}
+
+.todo [type="checkbox"] {
+    display: none;
+}
+
+.todo button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 1.2rem;
+}
+
+.todo label {
+    text-align: start;
+    overflow: scroll;
+    
+}
+
+.todo input:checked + label {
+    text-decoration: line-through;
+}
+
+.edit input {
+    font-size: 1.5rem;
+    width: 100%;
+    border: none;
+    border-bottom: inset;
+}

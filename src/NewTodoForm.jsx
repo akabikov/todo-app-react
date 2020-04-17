@@ -19,12 +19,17 @@ class NewTodoForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label htmlFor="newTodo">New ToDo</label>
-                <div>
-                    <input type="text" id="newTodo" onChange={this.handleChange} value={this.state.task} />
-                    <button type="submit" title="Add new ToDo"><i className="fas fa-plus"></i></button>
-                </div>
+            <form className="NewTodoForm" onSubmit={this.handleSubmit}>
+                    <input 
+                        type="text" 
+                        id="newTodo" 
+                        placeholder="New ToDo..." 
+                        value={this.state.task} 
+                        onChange={this.handleChange} 
+                    />
+                    <button type="submit" title="Add new ToDo">
+                        <i className="fas fa-plus"></i>
+                    </button>
             </form>
         );
     }
