@@ -75,7 +75,6 @@ class TodoList extends React.Component {
 
         return (
             <div className="TodoList">
-                <h1>TodoList</h1>
                 <ul className="list">
                     {todoList}
                 </ul>
