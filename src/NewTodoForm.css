@@ -1,8 +1,11 @@
 .NewTodoForm {
     padding: 1rem;
+    padding-right: 0;
+    margin: auto;
     margin-top: 2rem;
     display: grid;
     grid-template-columns: auto 4rem;
+    width: 100%;
 }
 
 .NewTodoForm input {
