@@ -22,7 +22,6 @@
 .todo label {
     text-align: start;
     overflow: auto;
-    
 }
 
 .todo input:checked + label {
@@ -34,4 +33,5 @@
     width: 100%;
     border: none;
     border-bottom: inset;
+    background-color: transparent;
 }
