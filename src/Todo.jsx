@@ -42,6 +42,7 @@ class Todo extends React.Component {
 
         const editForm = 
             <form className="todo edit" onSubmit={this.handleEdited}>
+                <div></div>
                 <input type="text" name="TaskEdit" value={editedTask} autoFocus onChange={this.handleChange} />
                 <button type="submit" title="Save"><i className="far fa-save"></i></button>
             </form>;

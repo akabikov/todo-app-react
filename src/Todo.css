@@ -3,14 +3,35 @@
     border-radius: 1rem;
     font-size: 1.5rem;
     display: grid;
-    grid-template-columns: auto 2rem 2rem;
+    grid-template-columns: 1rem auto 2rem 2rem;
     align-items: center;
     margin: 0.5rem auto;
     padding: 1rem;
 }
 
 .todo [type="checkbox"] {
-    display: none;
+    /* display: none; */
+    position: relative;
+    height: 0;
+    width: 0;
+}
+
+.todo [type="checkbox"]::before {
+    position: absolute;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    content:"\f0c8";
+    font-size: 1.2rem;
+}
+
+.todo [type="checkbox"]:checked::before {
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    content:"\f14a";
+    font-size: 1.2rem;
 }
 
 .todo button {
