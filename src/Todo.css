@@ -1,16 +1,15 @@
 .todo {
     background: lightgray;
     border-radius: 1rem;
-    font-size: 1.5rem;
+    font-size: var(--font-size);
     display: grid;
-    grid-template-columns: 1rem auto 2rem 2rem;
+    grid-template-columns: 1.3rem auto 4rem 1.5rem;
     align-items: center;
     margin: 0.5rem auto;
-    padding: 1rem;
+    padding: var(--padding);
 }
 
 .todo [type="checkbox"] {
-    /* display: none; */
     position: relative;
     height: 0;
     width: 0;
@@ -18,30 +17,31 @@
 
 .todo [type="checkbox"]::before {
     position: absolute;
-    background-color: transparent;
-    height: 100%;
-    width: 100%;
+    transform: translateY(-50%);
     font-family: "Font Awesome 5 Free";
-    display: inline-block;
+    font-size: var(--font-size);
     content:"\f0c8";
-    font-size: 1.2rem;
 }
 
 .todo [type="checkbox"]:checked::before {
-    font-family: "Font Awesome 5 Free";
-    display: inline-block;
     content:"\f14a";
-    font-size: 1.2rem;
 }
 
 .todo button {
     border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 1.2rem;
+    background-color: transparent;
+    font-size: var(--font-size);
+    transition: all 0.2s;
+}
+
+.todo button:hover {
+    transform: scale(1.05);
 }
 
 .todo label {
     text-align: start;
+    padding-left: 0.5rem;
+    padding-bottom: 0.2rem;
     overflow: auto;
 }
 
@@ -50,9 +50,12 @@
 }
 
 .edit input {
-    font-size: 1.5rem;
+    font-size: var(--font-size);
     width: 100%;
-    border: none;
-    border-bottom: inset;
     background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-left: 0.5rem;
+    padding-top: 0.3rem;
 }

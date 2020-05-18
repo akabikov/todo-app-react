@@ -1,22 +1,27 @@
 .NewTodoForm {
-    padding: 1rem;
+    padding: var(--padding);
     padding-right: 0;
-    margin: auto;
-    margin-top: 2rem;
+    margin: 0.5rem auto;
     display: grid;
     grid-template-columns: auto 4rem;
     width: 100%;
 }
 
 .NewTodoForm input {
-    font-size: 1.5rem;
+    font-size: var(--font-size);
     width: 100%;
-    border: none;
-    border-bottom: inset;
+    border-top: none;
+    border-right: none;
+    border-left: none;
 }
 
 .NewTodoForm button {
-    font-size: 1.5rem;
+    font-size: var(--font-size);
     border: none;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
+    transition: all 0.2s;
+}
+
+.NewTodoForm button:hover {
+    transform: scale(1.05);
 }

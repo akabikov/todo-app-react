@@ -75,10 +75,10 @@ class TodoList extends React.Component {
 
         return (
             <div className="TodoList">
+                <NewTodoForm submitHandler={this.addTodo}/>
                 <ul className="list">
                     {todoList}
                 </ul>
-                <NewTodoForm submitHandler={this.addTodo}/>
             </div>
         );
     }
