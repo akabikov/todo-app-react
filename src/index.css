@@ -7,6 +7,7 @@
 :root {
   --font-size: 1.5rem;
   --padding: 1rem;
+  --base-width: 600px;
 }
 
 body {
